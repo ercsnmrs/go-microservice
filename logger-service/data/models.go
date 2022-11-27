@@ -133,14 +133,15 @@ func (l *LogEntry) Update() (*mongo.UpdateResult, error) {
 		return nil, err
 	}
 
+	// TODO: Read https://stackoverflow.com/questions/54548441/composite-literal-uses-unkeyed-fields
 	result, err := collection.UpdateOne(
 		ctx,
 		bson.M{"_id": docID},
 		bson.D{
-			{"$set", bson.D{
-				{"name", l.Name},
-				{"data", l.Data},
-				{"updated_at", time.Now()},
+			{Key: "$set", Value: bson.D{
+				{Key: "name", Value: l.Name},
+				{Key: "data", Value: l.Data},
+				{Key: "updated_at", Value: time.Now()},
 			}},
 		},
 	)
