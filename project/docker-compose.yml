@@ -56,8 +56,8 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INTDB_DATBASE: logs
-      MONGO_INTDB_ROOT_USERNAME: admin
-      MONGO_INTDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATBASE: logs
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - ./db-data/mongo/:/data/db
