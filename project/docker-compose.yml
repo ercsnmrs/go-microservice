@@ -61,3 +61,13 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - ./db-data/mongo/:/data/db
+  
+  # project simulates mail server
+  # port 8025 is web interface
+  # only need 1 instance of the server running
+  # port 1025 is for local use, just expose -- to use if needed
+  mailhog:
+    image: 'mailhog/mailhog:latest'
+    ports:
+      - "1025:1025"
+      - "8025:8025" 
