@@ -1,2 +1,4 @@
 # ignore mongo system files
 project/db-data/mongo/*
+# ignore rabbitmq files
+project/db-data/rabbitmq/*
