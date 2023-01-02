@@ -67,40 +67,40 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
-	// In production should use `json.Marshall`, MarshalIndent makes it readable during development
-	jsonData, _ := json.MarshalIndent(entry, "", "\t")
+// func (app *Config) logItem(w http.ResponseWriter, entry LogPayload) {
+// 	// In production should use `json.Marshall`, MarshalIndent makes it readable during development
+// 	jsonData, _ := json.MarshalIndent(entry, "", "\t")
 
-	// From docker compose file
-	logServiceURL := "http://logger-service/log"
-	request, err := http.NewRequest("POST", logServiceURL, bytes.NewBuffer(jsonData))
-	if err != nil {
-		app.errorJSON(w, err)
-		return
-	}
+// 	// From docker compose file
+// 	logServiceURL := "http://logger-service/log"
+// 	request, err := http.NewRequest("POST", logServiceURL, bytes.NewBuffer(jsonData))
+// 	if err != nil {
+// 		app.errorJSON(w, err)
+// 		return
+// 	}
 
-	request.Header.Set("Content-Type", "application/json")
+// 	request.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{}
+// 	client := &http.Client{}
 
-	response, err := client.Do(request)
-	if err != nil {
-		app.errorJSON(w, err)
-		return
-	}
-	defer response.Body.Close()
+// 	response, err := client.Do(request)
+// 	if err != nil {
+// 		app.errorJSON(w, err)
+// 		return
+// 	}
+// 	defer response.Body.Close()
 
-	if response.StatusCode != http.StatusAccepted {
-		app.errorJSON(w, err)
-		return
-	}
+// 	if response.StatusCode != http.StatusAccepted {
+// 		app.errorJSON(w, err)
+// 		return
+// 	}
 
-	var payload jsonResponse
-	payload.Error = false
-	payload.Message = "logged"
+// 	var payload jsonResponse
+// 	payload.Error = false
+// 	payload.Message = "logged"
 
-	app.writeJSON(w, http.StatusAccepted, payload)
-}
+// 	app.writeJSON(w, http.StatusAccepted, payload)
+// }
 
 // TODO: Emit to RabbitMQ
 func (app *Config) logEventViaRabbit(w http.ResponseWriter, l LogPayload) {
