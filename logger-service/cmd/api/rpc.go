@@ -15,6 +15,7 @@ type RPCPayload struct {
 }
 
 // Expose via RPC with the reciever RPCServer
+// Note: Func name should be exported (capitalize)
 func (r *RPCServer) LogInfo(payload RPCPayload, resp *string) error {
 	collection := client.Database("logs").Collection("logs")
 	_, err := collection.InsertOne(context.TODO(), data.LogEntry{
