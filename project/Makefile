@@ -32,6 +32,12 @@ build_auth:
 	cd ../authentication-service && env GOOS=linux CGO_ENABLED=0 go build -o ${AUTH_BINARY} ./cmd/api
 	@echo "Done!"
 
+## build_front_linux: builds the front end binary as a linux
+build_front_linux:
+	@echo "Building front end binary..."
+	cd ../front-end && env GOOS=linux CGO_ENABLED=0 go build -o ${FRONT_BINARY} ./cmd/web
+	@echo "Done!"
+
 ## build_broker: builds the broker binary as a linux executable
 build_broker:
 	@echo "Building broker binary..."
@@ -60,12 +66,6 @@ build_mail:
 build_front:
 	@echo "Building front end binary..."
 	cd ../front-end && env CGO_ENABLED=0 go build -o ${FRONT_END_BINARY} ./cmd/web
-	@echo "Done!"
-
-## build_front_linux: builds the front end binary as a linux
-build_front_linux:
-	@echo "Building front end binary..."
-	cd ../front-end && set GOOS=linux&& set GOARCH=amd64&& set CGO_ENABLED=0 && go build -o ${FRONT_BINARY} ./cmd/web
 	@echo "Done!"
 
 ## start: starts the front end

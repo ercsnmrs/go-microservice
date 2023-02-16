@@ -22,4 +22,15 @@
 - change version version using docker build -f xxxx-service.dockerfile -t username/xxxx-service:1.0.1 .
 - then push
 - have 2 instances running
-- docker service update --image [ username/xxxx-service:1.0 .1 ] [ service name ] 
+- docker service update --image [ username/xxxx-service:1.0.1 ] [ service name ] 
+
+### Linode Linux Notes
+- add user -> adduser [ username ]
+- make user have sudo privileges -> usermod -aG sudo [ username ]
+- create firewall -> ufw allow ssh | ufw allow http | ufw allow https | ufw allow 2377/tcp | ufw allow 7946/tcp | ufw allow 7946/udp | ufw allow 4789/udp | ufw allow 8025/tcp
+- ufw allow ssh
+- sudo hostnamectl set-hostname node-1
+- docker swarm init --advertise-addr [ ip ] then copy swarm token to node 2
+- sudo mkdir swarm | sudo chown evm:evm swarm/
+-  vi swarm.yml
+- sudo usermod -aG docker evm
