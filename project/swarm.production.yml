@@ -2,7 +2,7 @@ version: '3'
 
 services:
   caddy:
-    image: ercsnmrs/micro-caddy-production:1.0.0
+    image: ercsnmrs/micro-caddy-production:1.0.1
     deploy:
       mode: replicated
       replicas: 1
@@ -22,7 +22,7 @@ services:
       mode: replicated
       replicas: 1
     environment:
-      BROKER_URL: "http://broker.banco.solutions"
+      BROKER_URL: "https://broker.banco.solutions"
 
   broker-service:
     image: ercsnmrs/broker-service:1.0.1
@@ -49,8 +49,6 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-    volumes:
-      - ./logger-service/templates/:/app/templates
 
   mail-service:
     image: ercsnmrs/mail-service:1.0.0

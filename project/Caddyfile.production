@@ -21,13 +21,14 @@
 	}
 }
 
-swarm.banco.solutions:80 {
+swarm.banco.solutions {
 	encode zstd gzip
 	import static
+	import security
 
 	reverse_proxy  http://frontend-service:9000
 }
 
-broker.banco.solutions:80 {
+broker.banco.solutions {
 	reverse_proxy http://broker-service:8080
 }
