@@ -45,6 +45,8 @@
     let received = document.getElementById("received");
     let mailBtn = document.getElementById("mailBtn");
 
+    const brokerURL = {{.BrokerURL}};
+
     logBtn.addEventListener("click", function() {
         const payload = {
             action: 'log',
@@ -63,7 +65,7 @@
             headers: headers,
         }
 
-        fetch('http://backend/handle', body)
+        fetch(`${brokerURL}/handle`, body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -98,7 +100,7 @@
             headers: headers,
         }
 
-        fetch('http://backend/log-grpc', body)
+        fetch(`${brokerURL}/log-grpc`, body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -120,7 +122,7 @@
             method: 'POST',
         }
 
-        fetch('http://backend/', body)
+        fetch(`${brokerURL}`, body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = "empty post request";
@@ -155,7 +157,7 @@
             headers: headers,
         }
 
-        fetch('http://backend/handle', body)
+        fetch(`${brokerURL}/handle`, body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -192,7 +194,7 @@
             headers: headers,
         }
 
-        fetch('http://backend/handle', body)
+        fetch(`${brokerURL}/handle`, body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);

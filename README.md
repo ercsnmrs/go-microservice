@@ -22,6 +22,7 @@
 - change version version using docker build -f xxxx-service.dockerfile -t username/xxxx-service:1.0.1 .
 - then push
 - have 2 instances running
+- docker pull ercsnmrs/micro-caddy-production:1.0.1 
 - docker service update --image [ username/xxxx-service:1.0.1 ] [ service name ] 
 
 ### Linode Linux Notes
@@ -34,3 +35,4 @@
 - sudo mkdir swarm | sudo chown evm:evm swarm/
 -  vi swarm.yml
 - sudo usermod -aG docker evm
+- gluster and SSHFS is one way to share assets over volumes/nodes
