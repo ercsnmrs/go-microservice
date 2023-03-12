@@ -10,6 +10,7 @@ services:
       mode: replicated
       replicas: 1
     environment:
+      PGUSER: postgres 
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: users

@@ -36,3 +36,6 @@
 -  vi swarm.yml
 - sudo usermod -aG docker evm
 - gluster and SSHFS is one way to share assets over volumes/nodes
+
+### K8s
+- Currently the container is locally exponse to expose it we can use node-port or load balancer or Ingress (like caddy in swarm file)
