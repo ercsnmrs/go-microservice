@@ -39,3 +39,6 @@
 
 ### K8s
 - Currently the container is locally exponse to expose it we can use node-port or load balancer or Ingress (like caddy in swarm file)
+- Ingress is like a webserver called NGINX that will handle request from outside then send to which resource
+- minikube addons enable ingress
+
