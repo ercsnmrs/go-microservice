@@ -36,3 +36,6 @@
 -  vi swarm.yml
 - sudo usermod -aG docker evm
 - gluster and SSHFS is one way to share assets over volumes/nodes
+
+### Testing 
+- go test -v .
