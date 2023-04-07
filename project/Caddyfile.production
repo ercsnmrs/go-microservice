@@ -21,14 +21,26 @@
 	}
 }
 
-swarm.banco.solutions {
+wallet.banco.solutions {
 	encode zstd gzip
 	import static
 	import security
 
-	reverse_proxy  http://frontend-service:9000
+	reverse_proxy http://wallet-server:9001
 }
 
-broker.banco.solutions {
+chain.banco.solutions {
+	encode zstd gzip
+	import static
+	import security
+
+	reverse_proxy http://blockchain-server:5000
+}
+
+api.banco.solutions {
+	encode zstd gzip
+	import static
+	import security
+
 	reverse_proxy http://broker-service:8080
 }

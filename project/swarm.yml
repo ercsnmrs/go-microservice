@@ -2,7 +2,7 @@ version: '3'
 
 services:
   caddy:
-    image: ercsnmrs/micro-caddy:1.0.0
+    image: ercsnmrs/micro-caddy:1.0.1
     deploy:
       mode: replicated
       replicas: 1
@@ -20,6 +20,22 @@ services:
       replicas: 1
     environment:
       BROKER_URL: "http://backend"
+
+  blockchain-server:
+    image: ercsnmrs/blockchain-server:1.0.0
+    ports:
+      - "5000:5000"
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  wallet-server:
+    image: ercsnmrs/wallet-server:1.0.0
+    ports:
+      - "9001:9001"
+    deploy:
+      mode: replicated
+      replicas: 1
 
   broker-service:
     image: ercsnmrs/broker-service:1.0.1
